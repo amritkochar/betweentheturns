@@ -1,0 +1,20 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import EpisodeCard from './EpisodeCard.astro';
+
+interface Props {
+  episodes: CollectionEntry<'episodes'>[];
+}
+
+const { episodes } = Astro.props;
+---
+
+<ul class='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
+  {
+    episodes.map((episode) => (
+      <li>
+        <EpisodeCard episode={episode} />
+      </li>
+    ))
+  }
+</ul>

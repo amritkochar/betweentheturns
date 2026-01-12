@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import EpisodeList from './EpisodeList.astro';
+import { Card, Button } from '@eliancodes/brutal-ui';
+
+interface Props {
+  count?: number;
+  excludeLatest?: boolean;
+}
+
+const { count = 3, excludeLatest = false } = Astro.props;
+
+const allEpisodes = await getCollection('episodes');
+const sortedEpisodes = allEpisodes
+  .filter(ep => !ep.data.draft)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const episodes = excludeLatest
+  ? sortedEpisodes.slice(1, count + 1)
+  : sortedEpisodes.slice(0, count);
+---
+
+{episodes.length > 0 && (
+  <section class='mt-8'>
+    <Card color='teal'>
+      <div class='flex justify-between items-start'>
+        <h2 class='text-2xl md:text-4xl lg:text-5xl mb-8 dm-serif'>
+          {excludeLatest ? 'More Episodes' : 'Recent Episodes'}
+        </h2>
+        <div class='hidden md:block'>
+          <Button href='/episodes/'>All Episodes &rarr;</Button>
+        </div>
+        <div class='block md:hidden'>
+          <Button href='/episodes/'>All</Button>
+        </div>
+      </div>
+      <EpisodeList episodes={episodes} />
+    </Card>
+  </section>
+)}

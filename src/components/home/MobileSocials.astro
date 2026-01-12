@@ -1,0 +1,34 @@
+---
+const socials = [
+  {
+    name: 'Instagram',
+    url: 'https://www.instagram.com/betweentheturns',
+    icon: 'i-uil-instagram',
+  },
+  {
+    name: 'YouTube',
+    url: 'https://www.youtube.com/@betweentheturns',
+    icon: 'i-uil-youtube',
+  },
+  {
+    name: 'Spotify',
+    url: 'https://open.spotify.com/show/betweentheturns',
+    icon: 'i-uil-music',
+  },
+];
+---
+
+<section class='md:hidden'>
+  <h2 class='hidden'>Socials section</h2>
+  <ul class='flex justify-between'>
+    {
+      socials.map((item) => (
+        <li class='bg-white px-4 py-2 text-orange border-black border-2 rounded card-shadow'>
+          <a href={item.url} target='_blank' title={`Follow on ${item.name}`}>
+            <div class:list={[item.icon, 'p-6']} />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>

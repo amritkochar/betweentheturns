@@ -1,0 +1,78 @@
+---
+interface Props {
+  pageTitle?: string;
+}
+
+const navigationItems = [
+  { name: 'Home', url: '/' },
+  { name: 'Episodes', url: '/episodes/' },
+  { name: 'About', url: '/about/' },
+  { name: 'Contact', url: '/contact/' },
+];
+
+const socialIcons = [
+  {
+    name: 'Instagram',
+    url: 'https://www.instagram.com/betweentheturns',
+    icon: 'i-uil-instagram',
+  },
+  {
+    name: 'YouTube',
+    url: 'https://www.youtube.com/@betweentheturns',
+    icon: 'i-uil-youtube',
+  },
+  {
+    name: 'Spotify',
+    url: 'https://open.spotify.com/show/betweentheturns',
+    icon: 'i-uil-music',
+  },
+];
+
+const { pageTitle } = Astro.props;
+---
+
+<header class='border-b-4 border-black flex justify-between p-6 items-center'>
+  {pageTitle && <h1 class='hidden'>{pageTitle}</h1>}
+  <a href='/' title='Back to Home'>
+    <p class='righteous text-2xl md:text-4xl'>Between<span class='text-orange'>The</span>Turns</p>
+  </a>
+  <nav class='hidden md:inline-block'>
+    <h2 class='hidden'>Navigation</h2>
+    <ul class='flex gap-8 poppins'>
+      {
+        navigationItems.map((item) => (
+          <li>
+            <a
+              class='text-lg font-medium hover:text-orange hover:underline transition-all duration-150 ease-in-out'
+              href={item.url}
+              title={`Go to ${item.name}`}
+            >
+              {item.name}
+            </a>
+          </li>
+        ))
+      }
+      {
+        socialIcons.map((item) => (
+          <li>
+            <a
+              href={item.url}
+              class='hover:text-orange hover:underline transition-all duration-150 ease-in-out'
+              target='_blank'
+              title={`Follow @betweentheturns on ${item.name}`}
+            >
+              <div class:list={[item.icon, 'w-6 h-6']} />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+  <nav class='md:hidden flex gap-4'>
+    <h2 class='hidden'>Mobile Navigation</h2>
+    <ul class='flex gap-4'>
+      <li><a href='/episodes/' class='hover:text-orange'>Episodes</a></li>
+      <li><a href='/about/' class='hover:text-orange'>About</a></li>
+    </ul>
+  </nav>
+</header>

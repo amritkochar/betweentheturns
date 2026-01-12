@@ -1,0 +1,59 @@
+---
+import LocalFont from '../generic/LocalFont.astro';
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: URL;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+if (Astro.props.ogImage === undefined) {
+  Astro.props.ogImage = new URL('/v1/generate/og/default.png', Astro.url);
+}
+
+const { title, description, ogImage } = Astro.props;
+---
+
+<head>
+  <LocalFont />
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <meta name='generator' content={Astro.generator} />
+
+  <link
+    rel='alternate'
+    href='/feed.xml'
+    type='application/rss+xml'
+    title='Between The Turns Podcast'
+  />
+
+  <meta name='title' content={`Between The Turns | ${title}`} />
+  <meta name='description' content={description} />
+  <meta name='author' content='Board Game Company' />
+  <meta name='keywords' content='podcast, board games, conversations, BGC, Board Game Company, India' />
+
+  <meta property='og:type' content='website' />
+  <meta property='og:url' content={canonicalURL} />
+  <meta property='og:title' content={`Between The Turns | ${title}`} />
+  <meta property='og:description' content={description} />
+  <meta property='og:image' content={ogImage} />
+  <meta property='og:site_name' content='Between The Turns' />
+
+  <meta property='twitter:card' content='summary_large_image' />
+  <meta property='twitter:url' content={canonicalURL} />
+  <meta property='twitter:title' content={`Between The Turns | ${title}`} />
+  <meta property='twitter:description' content={description} />
+  <meta property='twitter:image' content={ogImage} />
+
+  <link rel='canonical' href={canonicalURL} />
+  <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+
+  <title>Between The Turns | {title}</title>
+
+  <ViewTransitions />
+
+  <slot />
+</head>

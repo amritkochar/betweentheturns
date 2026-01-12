@@ -1,0 +1,247 @@
+---
+import Layout from './Default.astro';
+import RecentEpisodes from '@components/episodes/RecentEpisodes.astro';
+import PlatformLinks from '@components/episodes/PlatformLinks.astro';
+import { Card, Pill } from '@eliancodes/brutal-ui';
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  episodeNumber: number;
+  guest: string | string[];
+  description: string;
+  pubDate: Date;
+  duration: string;
+  tags: string[];
+  imgUrl?: ImageMetadata;
+  youtubeUrl?: string;
+  spotifyUrl?: string;
+}
+
+const {
+  title,
+  episodeNumber,
+  guest,
+  description,
+  pubDate,
+  duration,
+  tags,
+  imgUrl,
+  youtubeUrl,
+  spotifyUrl,
+} = Astro.props;
+
+const guests = Array.isArray(guest) ? guest : [guest];
+const formattedDate = pubDate.toLocaleDateString('en-US', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+// Extract YouTube video ID from URL
+function getYouTubeVideoId(url: string): string | null {
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
+    /youtube\.com\/watch\?.*v=([^&\n?#]+)/,
+  ];
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match) return match[1];
+  }
+  return null;
+}
+
+// Get YouTube thumbnail URL
+function getYouTubeThumbnail(videoId: string): string {
+  return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+}
+
+const youtubeVideoId = youtubeUrl ? getYouTubeVideoId(youtubeUrl) : null;
+const youtubeThumbnail = youtubeVideoId ? getYouTubeThumbnail(youtubeVideoId) : null;
+
+// Check if using placeholder image
+const hasCustomImage = imgUrl && !imgUrl.src.includes('placeholder');
+---
+
+<Layout
+  title={title}
+  pageTitle={`${title} | Between The Turns`}
+  description={description}
+>
+  <main class='p-6'>
+    <section class='mb-6'>
+      <a href='/episodes/' class='inline-flex items-center gap-2 px-4 py-2 bg-white border-2 border-black rounded card-shadow hover:bg-gray-100 transition-colors cursor-pointer poppins font-medium'>
+        &larr; Back to Episodes
+      </a>
+    </section>
+
+    <section class='grid lg:grid-cols-2 gap-6 mb-8'>
+      <div>
+        <Card color='orange'>
+          <div class='flex flex-col h-full'>
+            <span class='inline-block bg-black text-white px-3 py-1 text-sm poppins mb-4 w-fit'>
+              Episode {episodeNumber}
+            </span>
+            <h1 class='outfit text-3xl md:text-5xl lg:text-6xl font-bold'>
+              {title}
+            </h1>
+            <p class='mt-4 poppins text-xl md:text-2xl'>
+              with <span class='font-semibold'>{guests.join(', ')}</span>
+            </p>
+            <p class='mt-4 poppins text-lg opacity-90'>
+              {description}
+            </p>
+            <div class='flex items-center gap-4 mt-4 text-sm poppins opacity-75'>
+              <span>{formattedDate}</span>
+              <span>•</span>
+              <span>{duration}</span>
+            </div>
+            <div class='mt-6'>
+              <PlatformLinks youtubeUrl={youtubeUrl} spotifyUrl={spotifyUrl} />
+            </div>
+          </div>
+        </Card>
+      </div>
+
+      <div>
+        {youtubeThumbnail ? (
+          <!-- YouTube Thumbnail -->
+          <Card>
+            <a
+              href={youtubeUrl}
+              target='_blank'
+              rel='noopener noreferrer'
+              class='block relative rounded-lg border-3 border-black overflow-hidden h-full min-h-[300px] group cursor-pointer'
+            >
+              <img
+                src={youtubeThumbnail}
+                alt={title}
+                class='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105'
+              />
+              <div class='absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors'>
+                <div class='w-20 h-20 bg-white rounded-full flex items-center justify-center border-4 border-black card-shadow group-hover:scale-110 transition-transform'>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-red-600 ml-1" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+              <div class='absolute top-3 right-3 bg-red-600 text-white px-2 py-1 rounded text-xs poppins font-medium flex items-center gap-1'>
+                <div class='i-uil-youtube w-4 h-4' />
+                Watch
+              </div>
+            </a>
+          </Card>
+        ) : hasCustomImage ? (
+          <!-- Custom Image -->
+          <Card>
+            <div class='rounded-lg border-3 border-black overflow-hidden h-full min-h-[300px]'>
+              <Image
+                src={imgUrl}
+                alt={title}
+                width={800}
+                height={600}
+                class='w-full h-full object-cover'
+              />
+            </div>
+          </Card>
+        ) : spotifyUrl ? (
+          <!-- Spotify Fallback -->
+          <Card color='green'>
+            <a
+              href={spotifyUrl}
+              target='_blank'
+              rel='noopener noreferrer'
+              class='flex flex-col items-center justify-center h-full min-h-[300px] text-black cursor-pointer group'
+            >
+              <div class='w-24 h-24 bg-white rounded-full flex items-center justify-center border-4 border-black card-shadow group-hover:scale-105 transition-transform mb-6'>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-14 h-14 text-green-600" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                </svg>
+              </div>
+              <p class='outfit text-2xl md:text-3xl font-bold text-center'>
+                Listen on Spotify
+              </p>
+              <p class='poppins text-lg mt-2 opacity-75'>
+                {duration} of conversation
+              </p>
+            </a>
+          </Card>
+        ) : (
+          <!-- Default Placeholder -->
+          <Card color='purple'>
+            <div class='flex flex-col items-center justify-center h-full min-h-[300px] text-white relative'>
+              <div class='text-9xl font-bold outfit opacity-20'>
+                {episodeNumber.toString().padStart(2, '0')}
+              </div>
+              <div class='absolute flex items-center justify-center'>
+                <div class='w-24 h-24 bg-white rounded-full flex items-center justify-center border-4 border-black card-shadow'>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-purple ml-1" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+              <p class='mt-8 poppins text-lg text-center'>
+                {duration} of conversation
+              </p>
+            </div>
+          </Card>
+        )}
+      </div>
+    </section>
+
+    <section class='grid lg:grid-cols-3 gap-6'>
+      <div class='lg:col-span-2'>
+        <Card>
+          <h2 class='dm-serif text-2xl md:text-4xl mb-6'>Episode Notes</h2>
+          <article class='prose prose-lg poppins'>
+            <slot />
+          </article>
+        </Card>
+      </div>
+
+      <div>
+        <Card color='yellow'>
+          <h3 class='dm-serif text-xl md:text-2xl mb-4'>Topics Covered</h3>
+          <ul class='flex flex-wrap gap-2'>
+            {
+              tags.map((tag) => (
+                <li>
+                  <Pill>
+                    <span class='sanchez'>{tag}</span>
+                  </Pill>
+                </li>
+              ))
+            }
+          </ul>
+        </Card>
+
+        <div class='mt-6'>
+          <Card color='blue'>
+            <h3 class='dm-serif text-xl md:text-2xl mb-4 text-white'>Share this episode</h3>
+            <div class='flex gap-4'>
+              <a
+                href={`https://twitter.com/intent/tweet?text=Check out this episode of Between The Turns: ${title}&url=${Astro.url}`}
+                target='_blank'
+                class='text-white hover:text-yellow transition-colors cursor-pointer'
+              >
+                <div class='i-uil-twitter w-8 h-8' />
+              </a>
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${Astro.url}`}
+                target='_blank'
+                class='text-white hover:text-yellow transition-colors cursor-pointer'
+              >
+                <div class='i-uil-linkedin w-8 h-8' />
+              </a>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class='p-6'>
+    <RecentEpisodes count={3} />
+  </section>
+</Layout>

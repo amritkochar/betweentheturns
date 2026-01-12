@@ -1,0 +1,168 @@
+---
+import Layout from '@layouts/Default.astro';
+import { Card, Button, Pill } from '@eliancodes/brutal-ui';
+---
+
+<Layout
+  title='About'
+  pageTitle='About | Between The Turns'
+  description='Learn about Between The Turns podcast - fun conversations with interesting people while playing board games. Part of Board Game Company.'
+>
+  <main class='bg-purple p-6'>
+    <section class='grid md:grid-cols-2 gap-6 mb-8'>
+      <div>
+        <Card color='orange'>
+          <h1 class='outfit text-4xl md:text-6xl lg:text-7xl'>
+            About the <span class='text-white'>Podcast</span>
+          </h1>
+        </Card>
+      </div>
+      <div>
+        <Card>
+          <p class='poppins text-lg md:text-xl'>
+            <strong>Between The Turns</strong> is a podcast where we have fun, insightful,
+            and energetic conversations — all under 30 minutes — with interesting,
+            creative, technical, and diverse people while playing board games.
+          </p>
+          <p class='poppins text-lg mt-4'>
+            The magic happens in those moments between turns, when the game creates
+            space for genuine connection and unexpected conversations.
+          </p>
+        </Card>
+      </div>
+    </section>
+
+    <section class='grid md:grid-cols-8 gap-6 mb-8'>
+      <div class='col-span-4'>
+        <Card color='yellow'>
+          <h2 class='dm-serif text-3xl md:text-5xl mb-6'>The Format</h2>
+          <ul class='space-y-4 poppins'>
+            <li class='flex items-start gap-3'>
+              <span class='text-2xl'>🎯</span>
+              <span><strong>Under 30 minutes</strong> — Concise, focused conversations that respect your time</span>
+            </li>
+            <li class='flex items-start gap-3'>
+              <span class='text-2xl'>🎲</span>
+              <span><strong>Board games as backdrop</strong> — Games create natural rhythm and unexpected tangents</span>
+            </li>
+            <li class='flex items-start gap-3'>
+              <span class='text-2xl'>👥</span>
+              <span><strong>2-4 people</strong> — Intimate conversations with diverse guests</span>
+            </li>
+            <li class='flex items-start gap-3'>
+              <span class='text-2xl'>💡</span>
+              <span><strong>Real insights</strong> — Deep discussions that emerge naturally from play</span>
+            </li>
+          </ul>
+        </Card>
+      </div>
+
+      <div class='col-span-2'>
+        <Card color='teal'>
+          <h2 class='dm-serif text-2xl md:text-3xl mb-4'>Watch & Listen</h2>
+          <ul class='space-y-3'>
+            <li>
+              <a
+                href='https://youtube.com/@betweentheturns'
+                target='_blank'
+                class='flex items-center gap-2 poppins hover:text-orange transition-colors'
+              >
+                <div class='i-uil-youtube w-6 h-6' />
+                <span>YouTube</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href='https://open.spotify.com/show/betweentheturns'
+                target='_blank'
+                class='flex items-center gap-2 poppins hover:text-orange transition-colors'
+              >
+                <div class='i-uil-music w-6 h-6' />
+                <span>Spotify</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href='https://instagram.com/betweentheturns'
+                target='_blank'
+                class='flex items-center gap-2 poppins hover:text-orange transition-colors'
+              >
+                <div class='i-uil-instagram w-6 h-6' />
+                <span>Instagram</span>
+              </a>
+            </li>
+          </ul>
+        </Card>
+      </div>
+
+      <div class='col-span-2'>
+        <Card color='blue'>
+          <h2 class='dm-serif text-2xl md:text-3xl mb-4 text-white'>The Host</h2>
+          <p class='poppins text-white opacity-90'>
+            <strong>Amrit</strong> hosts Between The Turns, bringing together
+            fascinating people from all walks of life for conversations over
+            board games.
+          </p>
+          <p class='poppins text-white opacity-90 mt-3'>
+            Part board game enthusiast, part conversation curator.
+          </p>
+        </Card>
+      </div>
+    </section>
+
+    <section class='grid md:grid-cols-2 gap-6'>
+      <div>
+        <Card color='coral'>
+          <h2 class='dm-serif text-3xl md:text-4xl mb-4 text-white'>
+            Part of Board Game Company
+          </h2>
+          <p class='poppins text-white opacity-90'>
+            Between The Turns is proudly part of
+            <a
+              href='https://boardgamecompany.in'
+              target='_blank'
+              class='underline font-semibold'
+            >
+              Board Game Company
+            </a>
+            — a vibrant community of board game enthusiasts in India.
+          </p>
+          <p class='poppins text-white opacity-90 mt-4'>
+            BGC brings people together through the joy of tabletop gaming,
+            hosting events, meetups, and now this podcast.
+          </p>
+          <div class='mt-6 flex gap-4'>
+            <a
+              href='https://boardgamecompany.in'
+              target='_blank'
+            >
+              <Button>Visit BGC &rarr;</Button>
+            </a>
+            <a
+              href='https://instagram.com/boardgamecompany'
+              target='_blank'
+              class='inline-flex items-center gap-2 text-white hover:text-yellow transition-colors poppins'
+            >
+              <div class='i-uil-instagram w-5 h-5' />
+              @boardgamecompany
+            </a>
+          </div>
+        </Card>
+      </div>
+
+      <div>
+        <Card>
+          <h2 class='dm-serif text-3xl md:text-4xl mb-4'>Want to be a guest?</h2>
+          <p class='poppins'>
+            We're always looking for interesting people to feature on the podcast.
+            If you have a story to tell, insights to share, or just love board games
+            and great conversations — we'd love to hear from you!
+          </p>
+          <div class='mt-6'>
+            <Button href='/contact/'>Get in Touch &rarr;</Button>
+          </div>
+        </Card>
+      </div>
+    </section>
+  </main>
+</Layout>

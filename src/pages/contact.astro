@@ -1,0 +1,159 @@
+---
+import Layout from '@layouts/Default.astro';
+import { Card, Button } from '@eliancodes/brutal-ui';
+---
+
+<Layout
+  title='Contact'
+  pageTitle='Contact | Between The Turns'
+  description='Get in touch with Between The Turns podcast. Want to be a guest? Have questions? We would love to hear from you!'
+>
+  <main class='bg-yellow p-6'>
+    <section class='grid md:grid-cols-2 gap-6 mb-8'>
+      <div>
+        <Card color='blue'>
+          <h1 class='outfit text-4xl md:text-6xl lg:text-7xl text-white'>
+            Get in <span class='text-yellow'>Touch</span>
+          </h1>
+          <p class='poppins text-lg mt-4 text-white opacity-90'>
+            Want to be a guest on the show? Have feedback or questions?
+            We'd love to hear from you!
+          </p>
+        </Card>
+      </div>
+
+      <div>
+        <Card color='orange'>
+          <h2 class='dm-serif text-2xl md:text-4xl mb-6'>Email Us</h2>
+          <a
+            href='mailto:betweentheturnspod@gmail.com'
+            class='poppins text-xl md:text-2xl hover:underline flex items-center gap-3'
+          >
+            <div class='i-uil-envelope w-8 h-8' />
+            betweentheturnspod@gmail.com
+          </a>
+          <p class='poppins mt-4 opacity-75'>
+            Best way to reach us for guest inquiries, collaborations, or any questions.
+          </p>
+        </Card>
+      </div>
+    </section>
+
+    <section class='grid md:grid-cols-3 gap-6 mb-8'>
+      <div>
+        <Card color='teal'>
+          <h2 class='dm-serif text-2xl mb-4'>Instagram</h2>
+          <a
+            href='https://instagram.com/betweentheturns'
+            target='_blank'
+            class='flex items-center gap-3 poppins text-lg hover:text-orange transition-colors'
+          >
+            <div class='i-uil-instagram w-8 h-8' />
+            @betweentheturns
+          </a>
+          <p class='poppins mt-3 text-sm opacity-75'>
+            Follow for updates, clips, and behind-the-scenes content.
+          </p>
+        </Card>
+      </div>
+
+      <div>
+        <Card color='purple'>
+          <h2 class='dm-serif text-2xl mb-4 text-white'>YouTube</h2>
+          <a
+            href='https://youtube.com/@betweentheturns'
+            target='_blank'
+            class='flex items-center gap-3 poppins text-lg text-white hover:text-yellow transition-colors'
+          >
+            <div class='i-uil-youtube w-8 h-8' />
+            @betweentheturns
+          </a>
+          <p class='poppins mt-3 text-sm text-white opacity-75'>
+            Watch full episodes and shorts.
+          </p>
+        </Card>
+      </div>
+
+      <div>
+        <Card>
+          <h2 class='dm-serif text-2xl mb-4'>Spotify</h2>
+          <a
+            href='https://open.spotify.com/show/betweentheturns'
+            target='_blank'
+            class='flex items-center gap-3 poppins text-lg hover:text-orange transition-colors'
+          >
+            <div class='i-uil-music w-8 h-8' />
+            Between The Turns
+          </a>
+          <p class='poppins mt-3 text-sm opacity-75'>
+            Listen on the go.
+          </p>
+        </Card>
+      </div>
+    </section>
+
+    <section class='grid md:grid-cols-2 gap-6'>
+      <div>
+        <Card color='coral'>
+          <h2 class='dm-serif text-2xl md:text-4xl mb-4 text-white'>
+            Want to be a guest?
+          </h2>
+          <p class='poppins text-white opacity-90'>
+            We're always excited to meet interesting people! If you:
+          </p>
+          <ul class='mt-4 space-y-2 poppins text-white opacity-90'>
+            <li>• Have a fascinating story or perspective to share</li>
+            <li>• Work in a creative, technical, or unique field</li>
+            <li>• Love board games (or are curious to try!)</li>
+            <li>• Can spare ~45 minutes for recording</li>
+          </ul>
+          <p class='poppins mt-4 text-white'>
+            Drop us an email at
+            <a
+              href='mailto:betweentheturnspod@gmail.com'
+              class='underline font-semibold'
+            >
+              betweentheturnspod@gmail.com
+            </a>
+            with a bit about yourself!
+          </p>
+        </Card>
+      </div>
+
+      <div>
+        <Card>
+          <h2 class='dm-serif text-2xl md:text-4xl mb-4'>Board Game Company</h2>
+          <p class='poppins'>
+            Between The Turns is part of Board Game Company. For BGC-related
+            inquiries:
+          </p>
+          <div class='mt-4 space-y-3'>
+            <a
+              href='mailto:hello@boardgamecompany.in'
+              class='flex items-center gap-3 poppins hover:text-orange transition-colors'
+            >
+              <div class='i-uil-envelope w-6 h-6' />
+              hello@boardgamecompany.in
+            </a>
+            <a
+              href='https://instagram.com/boardgamecompany'
+              target='_blank'
+              class='flex items-center gap-3 poppins hover:text-orange transition-colors'
+            >
+              <div class='i-uil-instagram w-6 h-6' />
+              @boardgamecompany
+            </a>
+            <a
+              href='https://boardgamecompany.in'
+              target='_blank'
+              class='flex items-center gap-3 poppins hover:text-orange transition-colors'
+            >
+              <div class='i-uil-globe w-6 h-6' />
+              boardgamecompany.in
+            </a>
+          </div>
+        </Card>
+      </div>
+    </section>
+  </main>
+</Layout>

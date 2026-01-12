@@ -1,0 +1,114 @@
+---
+export interface Props {
+  backToTop?: boolean;
+}
+
+const { backToTop = false } = Astro.props;
+---
+
+{
+  backToTop && (
+    <button
+      class:list={[
+        backToTop ? `backToTop` : null,
+        'transition-300 z-50 opacity-0 fixed flex bottom-[10px] right-[30px] w-10 h-10 bg-white border border-black card-shadow',
+      ]}
+    >
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        fill='none'
+        viewBox='0 0 24 24'
+        height='100%'
+        width='100%'
+        stroke-width='1.5'
+        stroke='currentColor'
+      >
+        <path
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          d='m4.5 15.75 7.5-7.5 7.5 7.5'
+        />
+      </svg>
+    </button>
+  )
+}
+
+<footer class='bg-black text-white p-6'>
+  <h2 class='hidden'>Footer</h2>
+  <div class='flex flex-col md:flex-row justify-between items-center gap-4'>
+    <div>
+      <p class='outfit text-lg'>
+        <span class='text-orange'>Between</span>The<span class='text-orange'>Turns</span>
+      </p>
+      <p class='poppins text-sm opacity-75 mt-1'>
+        Part of <a
+          href='https://boardgamecompany.in'
+          target='_blank'
+          class='text-orange hover:underline'>Board Game Company</a
+        >
+      </p>
+    </div>
+    <div class='flex gap-6'>
+      <a
+        href='https://instagram.com/betweentheturns'
+        target='_blank'
+        class='hover:text-orange transition-colors'
+        title='Follow on Instagram'
+      >
+        <div class='i-uil-instagram w-6 h-6' />
+      </a>
+      <a
+        href='https://youtube.com/@betweentheturns'
+        target='_blank'
+        class='hover:text-orange transition-colors'
+        title='Watch on YouTube'
+      >
+        <div class='i-uil-youtube w-6 h-6' />
+      </a>
+      <a
+        href='https://open.spotify.com/show/betweentheturns'
+        target='_blank'
+        class='hover:text-orange transition-colors'
+        title='Listen on Spotify'
+      >
+        <div class='i-uil-music w-6 h-6' />
+      </a>
+      <a
+        href='mailto:betweentheturnspod@gmail.com'
+        class='hover:text-orange transition-colors'
+        title='Email us'
+      >
+        <div class='i-uil-envelope w-6 h-6' />
+      </a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .backToTop.active {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const backToTop = document.querySelector('.backToTop');
+
+    const toggleBackToTopButton = () => {
+      if (window.scrollY > 250) {
+        backToTop?.classList.add('active');
+      } else {
+        backToTop?.classList.remove('active');
+      }
+    };
+
+    backToTop?.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    });
+
+    window.addEventListener('scroll', toggleBackToTopButton);
+  });
+</script>
