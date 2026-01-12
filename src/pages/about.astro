@@ -8,23 +8,23 @@ import { Card, Button, Pill } from '@eliancodes/brutal-ui';
   pageTitle='About | Between The Turns'
   description='Learn about Between The Turns podcast - fun conversations with interesting people while playing board games. Part of Board Game Company.'
 >
-  <main class='bg-purple p-6'>
-    <section class='grid md:grid-cols-2 gap-6 mb-8'>
+  <main class='bg-purple p-4 sm:p-6'>
+    <section class='grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8'>
       <div>
         <Card color='orange'>
-          <h1 class='outfit text-4xl md:text-6xl lg:text-7xl'>
+          <h1 class='outfit text-3xl sm:text-4xl md:text-6xl lg:text-7xl'>
             About the <span class='text-white'>Podcast</span>
           </h1>
         </Card>
       </div>
       <div>
         <Card>
-          <p class='poppins text-lg md:text-xl'>
+          <p class='poppins text-base sm:text-lg md:text-xl'>
             <strong>Between The Turns</strong> is a podcast where we have fun, insightful,
             and energetic conversations — all under 30 minutes — with interesting,
             creative, technical, and diverse people while playing board games.
           </p>
-          <p class='poppins text-lg mt-4'>
+          <p class='poppins text-sm sm:text-base md:text-lg mt-3 sm:mt-4'>
             The magic happens in those moments between turns, when the game creates
             space for genuine connection and unexpected conversations.
           </p>
@@ -32,42 +32,42 @@ import { Card, Button, Pill } from '@eliancodes/brutal-ui';
       </div>
     </section>
 
-    <section class='grid md:grid-cols-8 gap-6 mb-8'>
-      <div class='col-span-4'>
+    <section class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-8 gap-4 sm:gap-6 mb-6 sm:mb-8'>
+      <div class='col-span-1 sm:col-span-2 md:col-span-4'>
         <Card color='yellow'>
-          <h2 class='dm-serif text-3xl md:text-5xl mb-6'>The Format</h2>
-          <ul class='space-y-4 poppins'>
-            <li class='flex items-start gap-3'>
-              <span class='text-2xl'>🎯</span>
+          <h2 class='dm-serif text-2xl sm:text-3xl md:text-5xl mb-4 sm:mb-6'>The Format</h2>
+          <ul class='space-y-3 sm:space-y-4 poppins text-sm sm:text-base'>
+            <li class='flex items-start gap-2 sm:gap-3'>
+              <span class='text-xl sm:text-2xl'>🎯</span>
               <span><strong>Under 30 minutes</strong> — Concise, focused conversations that respect your time</span>
             </li>
-            <li class='flex items-start gap-3'>
-              <span class='text-2xl'>🎲</span>
+            <li class='flex items-start gap-2 sm:gap-3'>
+              <span class='text-xl sm:text-2xl'>🎲</span>
               <span><strong>Board games as backdrop</strong> — Games create natural rhythm and unexpected tangents</span>
             </li>
-            <li class='flex items-start gap-3'>
-              <span class='text-2xl'>👥</span>
+            <li class='flex items-start gap-2 sm:gap-3'>
+              <span class='text-xl sm:text-2xl'>👥</span>
               <span><strong>2-4 people</strong> — Intimate conversations with diverse guests</span>
             </li>
-            <li class='flex items-start gap-3'>
-              <span class='text-2xl'>💡</span>
+            <li class='flex items-start gap-2 sm:gap-3'>
+              <span class='text-xl sm:text-2xl'>💡</span>
               <span><strong>Real insights</strong> — Deep discussions that emerge naturally from play</span>
             </li>
           </ul>
         </Card>
       </div>
 
-      <div class='col-span-2'>
+      <div class='col-span-1 md:col-span-2'>
         <Card color='teal'>
-          <h2 class='dm-serif text-2xl md:text-3xl mb-4'>Watch & Listen</h2>
-          <ul class='space-y-3'>
+          <h2 class='dm-serif text-xl sm:text-2xl md:text-3xl mb-3 sm:mb-4'>Watch & Listen</h2>
+          <ul class='space-y-2 sm:space-y-3'>
             <li>
               <a
                 href='https://youtube.com/@betweentheturns'
                 target='_blank'
-                class='flex items-center gap-2 poppins hover:text-orange transition-colors'
+                class='flex items-center gap-2 poppins text-sm sm:text-base hover:text-orange transition-colors'
               >
-                <div class='i-uil-youtube w-6 h-6' />
+                <div class='i-uil-youtube w-5 sm:w-6 h-5 sm:h-6' />
                 <span>YouTube</span>
               </a>
             </li>
@@ -75,9 +75,9 @@ import { Card, Button, Pill } from '@eliancodes/brutal-ui';
               <a
                 href='https://open.spotify.com/show/betweentheturns'
                 target='_blank'
-                class='flex items-center gap-2 poppins hover:text-orange transition-colors'
+                class='flex items-center gap-2 poppins text-sm sm:text-base hover:text-orange transition-colors'
               >
-                <div class='i-uil-music w-6 h-6' />
+                <div class='i-uil-music w-5 sm:w-6 h-5 sm:h-6' />
                 <span>Spotify</span>
               </a>
             </li>
@@ -85,9 +85,9 @@ import { Card, Button, Pill } from '@eliancodes/brutal-ui';
               <a
                 href='https://instagram.com/betweentheturns'
                 target='_blank'
-                class='flex items-center gap-2 poppins hover:text-orange transition-colors'
+                class='flex items-center gap-2 poppins text-sm sm:text-base hover:text-orange transition-colors'
               >
-                <div class='i-uil-instagram w-6 h-6' />
+                <div class='i-uil-instagram w-5 sm:w-6 h-5 sm:h-6' />
                 <span>Instagram</span>
               </a>
             </li>
@@ -95,28 +95,28 @@ import { Card, Button, Pill } from '@eliancodes/brutal-ui';
         </Card>
       </div>
 
-      <div class='col-span-2'>
+      <div class='col-span-1 md:col-span-2'>
         <Card color='blue'>
-          <h2 class='dm-serif text-2xl md:text-3xl mb-4 text-white'>The Host</h2>
-          <p class='poppins text-white opacity-90'>
+          <h2 class='dm-serif text-xl sm:text-2xl md:text-3xl mb-3 sm:mb-4 text-white'>The Host</h2>
+          <p class='poppins text-sm sm:text-base text-white opacity-90'>
             <strong>Amrit</strong> hosts Between The Turns, bringing together
             fascinating people from all walks of life for conversations over
             board games.
           </p>
-          <p class='poppins text-white opacity-90 mt-3'>
+          <p class='poppins text-sm sm:text-base text-white opacity-90 mt-2 sm:mt-3'>
             Part board game enthusiast, part conversation curator.
           </p>
         </Card>
       </div>
     </section>
 
-    <section class='grid md:grid-cols-2 gap-6'>
+    <section class='grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6'>
       <div>
         <Card color='coral'>
-          <h2 class='dm-serif text-3xl md:text-4xl mb-4 text-white'>
+          <h2 class='dm-serif text-2xl sm:text-3xl md:text-4xl mb-3 sm:mb-4 text-white'>
             Part of Board Game Company
           </h2>
-          <p class='poppins text-white opacity-90'>
+          <p class='poppins text-sm sm:text-base text-white opacity-90'>
             Between The Turns is proudly part of
             <a
               href='https://boardgamecompany.in'
@@ -127,11 +127,11 @@ import { Card, Button, Pill } from '@eliancodes/brutal-ui';
             </a>
             — a vibrant community of board game enthusiasts in India.
           </p>
-          <p class='poppins text-white opacity-90 mt-4'>
+          <p class='poppins text-sm sm:text-base text-white opacity-90 mt-3 sm:mt-4'>
             BGC brings people together through the joy of tabletop gaming,
             hosting events, meetups, and now this podcast.
           </p>
-          <div class='mt-6 flex gap-4'>
+          <div class='mt-4 sm:mt-6 flex flex-wrap gap-3 sm:gap-4'>
             <a
               href='https://boardgamecompany.in'
               target='_blank'
@@ -141,7 +141,7 @@ import { Card, Button, Pill } from '@eliancodes/brutal-ui';
             <a
               href='https://instagram.com/boardgamecompany'
               target='_blank'
-              class='inline-flex items-center gap-2 text-white hover:text-yellow transition-colors poppins'
+              class='inline-flex items-center gap-2 text-white hover:text-yellow transition-colors poppins text-sm sm:text-base'
             >
               <div class='i-uil-instagram w-5 h-5' />
               @boardgamecompany
@@ -152,13 +152,13 @@ import { Card, Button, Pill } from '@eliancodes/brutal-ui';
 
       <div>
         <Card>
-          <h2 class='dm-serif text-3xl md:text-4xl mb-4'>Want to be a guest?</h2>
-          <p class='poppins'>
+          <h2 class='dm-serif text-2xl sm:text-3xl md:text-4xl mb-3 sm:mb-4'>Want to be a guest?</h2>
+          <p class='poppins text-sm sm:text-base'>
             We're always looking for interesting people to feature on the podcast.
             If you have a story to tell, insights to share, or just love board games
             and great conversations — we'd love to hear from you!
           </p>
-          <div class='mt-6'>
+          <div class='mt-4 sm:mt-6'>
             <Button href='/contact/'>Get in Touch &rarr;</Button>
           </div>
         </Card>

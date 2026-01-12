@@ -27,7 +27,7 @@ const podcastFeatures = [
   pageTitle='Between The Turns | A Board Game Podcast'
   description='Fun, insightful, energetic conversations under 30 minutes with interesting people while playing board games. Part of Board Game Company.'
 >
-  <main class='bg-cream p-6'>
+  <main class='bg-cream p-4 sm:p-6'>
     <MobileSocials />
 
     {latestEpisode && (
@@ -36,17 +36,17 @@ const podcastFeatures = [
       </section>
     )}
 
-    <section id='about' class='grid md:grid-cols-8 gap-6 mt-8'>
+    <section id='about' class='grid grid-cols-1 md:grid-cols-8 gap-4 sm:gap-6 mt-6 sm:mt-8'>
       <h2 class='hidden'>About Between The Turns</h2>
 
-      <div class='col-span-4'>
+      <div class='col-span-1 md:col-span-4'>
         <Card color='blue'>
-          <div class='flex flex-col justify-between items-start gap-4'>
-            <p class='mt-4 outfit text-2xl md:text-4xl lg:text-5xl text-white'>
+          <div class='flex flex-col justify-between items-start gap-3 sm:gap-4'>
+            <p class='mt-2 sm:mt-4 outfit text-xl sm:text-2xl md:text-4xl lg:text-5xl text-white'>
               Conversations that happen
               <span class='text-yellow'>between the turns</span>
             </p>
-            <p class='mt-2 poppins text-lg md:text-xl text-white opacity-90'>
+            <p class='mt-1 sm:mt-2 poppins text-base sm:text-lg md:text-xl text-white opacity-90'>
               Fun, insightful, energetic conversations under 30 minutes with
               interesting, creative, technical, and diverse people — all while
               playing board games.
@@ -58,17 +58,17 @@ const podcastFeatures = [
         </Card>
       </div>
 
-      <div class='col-span-2'>
+      <div class='col-span-1 md:col-span-2'>
         <Card color='yellow'>
-          <h2 class='text-2xl md:text-3xl lg:text-4xl mb-6 dm-serif'>
+          <h2 class='text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-4 sm:mb-6 dm-serif'>
             What to expect
           </h2>
-          <ul class='flex gap-3 flex-wrap'>
+          <ul class='flex gap-2 sm:gap-3 flex-wrap'>
             {
               podcastFeatures.map((feature) => (
                 <li>
                   <Pill>
-                    <span class='sanchez'>{feature}</span>
+                    <span class='sanchez text-xs sm:text-sm'>{feature}</span>
                   </Pill>
                 </li>
               ))
@@ -77,12 +77,12 @@ const podcastFeatures = [
         </Card>
       </div>
 
-      <div class='col-span-2'>
+      <div class='col-span-1 md:col-span-2'>
         <Card color='purple'>
-          <h2 class='text-2xl md:text-3xl lg:text-4xl mb-4 dm-serif text-white'>
+          <h2 class='text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-3 sm:mb-4 dm-serif text-white'>
             Part of BGC
           </h2>
-          <p class='poppins text-white opacity-90'>
+          <p class='poppins text-sm sm:text-base text-white opacity-90'>
             Between The Turns is brought to you by
             <a
               href='https://boardgamecompany.in'
@@ -93,14 +93,14 @@ const podcastFeatures = [
             </a>
             — a community of board game enthusiasts in India.
           </p>
-          <div class='mt-4'>
+          <div class='mt-3 sm:mt-4'>
             <a
               href='https://instagram.com/boardgamecompany'
               target='_blank'
               class='inline-flex items-center gap-2 text-white hover:text-yellow transition-colors'
             >
               <div class='i-uil-instagram w-5 h-5' />
-              <span class='poppins'>@boardgamecompany</span>
+              <span class='poppins text-sm sm:text-base'>@boardgamecompany</span>
             </a>
           </div>
         </Card>

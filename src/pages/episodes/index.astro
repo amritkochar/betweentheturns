@@ -15,11 +15,11 @@ const episodes = allEpisodes
   pageTitle='All Episodes | Between The Turns'
   description='Browse all episodes of Between The Turns podcast. Fun conversations with interesting people while playing board games.'
 >
-  <main class='bg-teal p-6'>
-    <section class='mb-8'>
+  <main class='bg-teal p-4 sm:p-6'>
+    <section class='mb-6 sm:mb-8'>
       <Card color='orange'>
-        <h1 class='outfit text-4xl md:text-6xl lg:text-7xl'>All Episodes</h1>
-        <p class='poppins text-lg mt-4'>
+        <h1 class='outfit text-3xl sm:text-4xl md:text-6xl lg:text-7xl'>All Episodes</h1>
+        <p class='poppins text-base sm:text-lg mt-3 sm:mt-4'>
           {episodes.length} episode{episodes.length !== 1 ? 's' : ''} of conversations, games, and insights.
         </p>
       </Card>
@@ -34,8 +34,8 @@ const episodes = allEpisodes
     ) : (
       <section>
         <Card color='yellow'>
-          <h2 class='dm-serif text-2xl md:text-4xl mb-4'>Coming Soon!</h2>
-          <p class='poppins'>
+          <h2 class='dm-serif text-xl sm:text-2xl md:text-4xl mb-3 sm:mb-4'>Coming Soon!</h2>
+          <p class='poppins text-sm sm:text-base'>
             We're working on our first episodes. Follow us on
             <a
               href='https://instagram.com/betweentheturns'

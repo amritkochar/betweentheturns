@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prevent horizontal scroll on mobile */
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 .card-shadow {
   filter: drop-shadow(7px 7px 0 rgb(0 0 0 / 1));
   transition: all;
@@ -10,6 +16,28 @@
 }
 .card-shadow:hover {
   filter: drop-shadow(5px 5px 0 rgb(0 0 0 / 1));
+}
+
+/* Smaller shadows on mobile to prevent overflow */
+@media (max-width: 640px) {
+  .card-shadow {
+    filter: drop-shadow(4px 4px 0 rgb(0 0 0 / 1));
+  }
+  .card-shadow:hover {
+    filter: drop-shadow(3px 3px 0 rgb(0 0 0 / 1));
+  }
+}
+
+/* Responsive pill overrides for mobile */
+@media (max-width: 640px) {
+  span.brutal-pill {
+    padding: 0.15rem 0.5rem;
+    font-size: 0.7rem;
+    filter: drop-shadow(2px 2px 0 rgb(0 0 0 / 1));
+  }
+  span.brutal-pill:hover {
+    filter: drop-shadow(3px 3px 0 rgb(0 0 0 / 1));
+  }
 }
 
 :root

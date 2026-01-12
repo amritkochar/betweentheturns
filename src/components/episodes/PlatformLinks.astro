@@ -8,16 +8,16 @@ interface Props {
 const { youtubeUrl, spotifyUrl, compact = false } = Astro.props;
 ---
 
-<div class:list={['flex gap-3 flex-wrap', compact ? '' : 'mt-4']}>
+<div class:list={['flex gap-2 sm:gap-3 flex-wrap', compact ? '' : 'mt-3 sm:mt-4']}>
   {youtubeUrl && (
     <a
       href={youtubeUrl}
       target='_blank'
       rel='noopener noreferrer'
-      class='inline-flex items-center gap-2 px-4 py-2 bg-white border-2 border-black rounded card-shadow hover:bg-gray-100 transition-colors cursor-pointer poppins font-medium'
+      class='inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 bg-white border-2 border-black rounded card-shadow hover:bg-gray-100 transition-colors cursor-pointer poppins font-medium text-sm sm:text-base'
     >
-      <div class='i-uil-youtube w-5 h-5' />
-      {compact ? 'YouTube' : 'Watch on YouTube'}
+      <div class='i-uil-youtube w-4 sm:w-5 h-4 sm:h-5' />
+      {compact ? 'YouTube' : <><span class='hidden sm:inline'>Watch on </span>YouTube</>}
     </a>
   )}
   {spotifyUrl && (
@@ -25,10 +25,10 @@ const { youtubeUrl, spotifyUrl, compact = false } = Astro.props;
       href={spotifyUrl}
       target='_blank'
       rel='noopener noreferrer'
-      class='inline-flex items-center gap-2 px-4 py-2 bg-white border-2 border-black rounded card-shadow hover:bg-gray-100 transition-colors cursor-pointer poppins font-medium'
+      class='inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 bg-white border-2 border-black rounded card-shadow hover:bg-gray-100 transition-colors cursor-pointer poppins font-medium text-sm sm:text-base'
     >
-      <div class='i-uil-music w-5 h-5' />
-      {compact ? 'Spotify' : 'Listen on Spotify'}
+      <div class='i-uil-music w-4 sm:w-5 h-4 sm:h-5' />
+      {compact ? 'Spotify' : <><span class='hidden sm:inline'>Listen on </span>Spotify</>}
     </a>
   )}
 </div>

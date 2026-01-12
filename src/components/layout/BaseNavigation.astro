@@ -31,11 +31,13 @@ const socialIcons = [
 const { pageTitle } = Astro.props;
 ---
 
-<header class='border-b-4 border-black flex justify-between p-6 items-center'>
+<header class='border-b-4 border-black flex justify-between p-4 sm:p-6 items-center'>
   {pageTitle && <h1 class='hidden'>{pageTitle}</h1>}
   <a href='/' title='Back to Home'>
-    <p class='righteous text-2xl md:text-4xl'>Between<span class='text-orange'>The</span>Turns</p>
+    <p class='righteous text-xl sm:text-2xl md:text-4xl'>Between<span class='text-orange'>The</span>Turns</p>
   </a>
+
+  <!-- Desktop Navigation -->
   <nav class='hidden md:inline-block'>
     <h2 class='hidden'>Navigation</h2>
     <ul class='flex gap-8 poppins'>
@@ -68,11 +70,153 @@ const { pageTitle } = Astro.props;
       }
     </ul>
   </nav>
-  <nav class='md:hidden flex gap-4'>
-    <h2 class='hidden'>Mobile Navigation</h2>
-    <ul class='flex gap-4'>
-      <li><a href='/episodes/' class='hover:text-orange'>Episodes</a></li>
-      <li><a href='/about/' class='hover:text-orange'>About</a></li>
-    </ul>
-  </nav>
+
+  <!-- Mobile Hamburger Button -->
+  <button
+    id="mobile-menu-btn"
+    class='md:hidden flex flex-col justify-center items-center w-10 h-10 border-2 border-black rounded bg-white card-shadow'
+    aria-label="Toggle mobile menu"
+    aria-expanded="false"
+  >
+    <span class='hamburger-line block w-5 h-0.5 bg-black transition-all duration-300'></span>
+    <span class='hamburger-line block w-5 h-0.5 bg-black mt-1 transition-all duration-300'></span>
+    <span class='hamburger-line block w-5 h-0.5 bg-black mt-1 transition-all duration-300'></span>
+  </button>
 </header>
+
+<!-- Mobile Menu Drawer -->
+<nav
+  id="mobile-menu"
+  class='md:hidden fixed inset-0 z-50 transform translate-x-full transition-transform duration-300 ease-in-out pointer-events-none'
+  aria-hidden="true"
+>
+  <!-- Backdrop -->
+  <div class='mobile-menu-backdrop absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300'></div>
+
+  <!-- Menu Panel -->
+  <div class='absolute right-0 top-0 h-full w-72 max-w-[80vw] bg-cream border-l-4 border-black flex flex-col'>
+    <!-- Close Button -->
+    <div class='flex justify-between items-center p-4 border-b-2 border-black'>
+      <span class='righteous text-lg'>Menu</span>
+      <button
+        id="mobile-menu-close"
+        class='w-10 h-10 flex items-center justify-center border-2 border-black rounded bg-white'
+        aria-label="Close menu"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Navigation Links -->
+    <ul class='flex flex-col p-4 gap-1 poppins'>
+      {
+        navigationItems.map((item) => (
+          <li>
+            <a
+              class='block py-3 px-4 text-lg font-medium hover:bg-orange hover:text-white rounded-lg transition-all duration-150'
+              href={item.url}
+            >
+              {item.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- Divider -->
+    <div class='border-t-2 border-black mx-4'></div>
+
+    <!-- Social Links -->
+    <div class='p-4'>
+      <p class='poppins text-sm text-gray-600 mb-3'>Follow us</p>
+      <ul class='flex gap-3'>
+        {
+          socialIcons.map((item) => (
+            <li>
+              <a
+                href={item.url}
+                target='_blank'
+                class='w-12 h-12 flex items-center justify-center border-2 border-black rounded-lg bg-white hover:bg-orange hover:text-white transition-colors card-shadow'
+                title={item.name}
+              >
+                <div class:list={[item.icon, 'w-6 h-6']} />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <!-- Footer -->
+    <div class='mt-auto p-4 border-t-2 border-black'>
+      <p class='poppins text-xs text-gray-500'>
+        Part of <a href='https://boardgamecompany.in' target='_blank' class='text-orange hover:underline'>Board Game Company</a>
+      </p>
+    </div>
+  </div>
+</nav>
+
+<style>
+  /* Hamburger animation when menu is open */
+  #mobile-menu-btn.menu-open .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+  }
+  #mobile-menu-btn.menu-open .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+  #mobile-menu-btn.menu-open .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+  }
+
+  /* Menu open state */
+  #mobile-menu.menu-open {
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+  #mobile-menu.menu-open .mobile-menu-backdrop {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const closeBtn = document.getElementById('mobile-menu-close');
+    const backdrop = menu?.querySelector('.mobile-menu-backdrop');
+
+    function openMenu() {
+      menuBtn?.classList.add('menu-open');
+      menu?.classList.add('menu-open');
+      menu?.setAttribute('aria-hidden', 'false');
+      menuBtn?.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      menuBtn?.classList.remove('menu-open');
+      menu?.classList.remove('menu-open');
+      menu?.setAttribute('aria-hidden', 'true');
+      menuBtn?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    menuBtn?.addEventListener('click', openMenu);
+    closeBtn?.addEventListener('click', closeMenu);
+    backdrop?.addEventListener('click', closeMenu);
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu?.classList.contains('menu-open')) {
+        closeMenu();
+      }
+    });
+
+    // Close menu when clicking nav links
+    menu?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+  });
+</script>
